@@ -128,6 +128,53 @@ marcarComoLido(2, 5);
 console.log(`\nLivros Lidos: ${listarLidos().join(", ")}`);
 console.log(`Livros Pendentes: ${listarPendentes().join(", ")}`);
 
+// Retorna a quantidade total de livros na coleção
+const totalLivros = (): number => titulos.length;
+
+// Retorna quantos livros já foram marcados como lidos
+const totalLidos = (): number => lido.filter(status => status === true).length;
+
+// Calcula a porcentagem de leitura da biblioteca
+function percentualLidos(): number {
+    if (totalLivros() === 0) return 0;
+    return (totalLidos() / totalLivros()) * 100;
+}
+
+// Calcula a média das notas dadas apenas aos livros lidos
+function mediaAvaliacoes(): number {
+    const notasLidos = avaliacoes.filter((_, index) => lido[index]);
+    if (notasLidos.length === 0) return 0;
+    
+    const soma = notasLidos.reduce((acc, nota) => acc + nota, 0);
+    return soma / notasLidos.length;
+}
+
+// Encontra o título do livro que recebeu a maior nota
+function livroMaiorAvaliacao(): string {
+    if (totalLidos() === 0) return "Nenhum livro lido";
+    
+    // Usamos o reduce para comparar as notas e retornar o índice da maior
+    const indiceMaior = avaliacoes.reduce((melhor, atual, index) => 
+        atual > avaliacoes[melhor] ? index : melhor, 0);
+    
+    return titulos[indiceMaior];
+}
+
+// Soma o total de páginas apenas dos livros que você já leu
+function totalPaginasLidas(): number {
+    return paginas
+        .filter((_, index) => lido[index])
+        .reduce((acc, pag) => acc + pag, 0);
+}
+
+
+console.log("\n=== ESTATISTICAS ===");
+console.log(`Total de livros: ${totalLivros()}`);
+console.log(`Livros lidos: ${totalLidos()} (${percentualLidos().toFixed(2)}%)`);
+console.log(`Media das avaliacoes: ${mediaAvaliacoes().toFixed(2)}`);
+console.log(`Livro melhor avaliado: ${livroMaiorAvaliacao()}`);
+console.log(`Total de paginas lidas: ${totalPaginasLidas()}`);
+
 adicionarLivro("O Silmarillion", "J.R.R. Tolkien", 1977, 428); // Adiciona um válido
 adicionarLivro("Livro Inválido", "Desconhecido", -5, 0); // Testa a validação do if
 removerLivro(2); // Remove o livro "1984" que estava no índice 2
