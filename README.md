@@ -43,9 +43,9 @@ O menu interativo será iniciado no seu terminal.
 ## Como Usar
 Ao iniciar, o sistema exibirá o seguinte menu interativo:
 
-=============================================
+
    GERENCIADOR DE BIBLIOTECA PESSOAL
-=============================================
+
 1. Exibir todos os livros
 2. Adicionar um novo livro
 3. Marcar um livro como lido
@@ -53,7 +53,7 @@ Ao iniciar, o sistema exibirá o seguinte menu interativo:
 5. Exibir estatísticas da coleção
 6. Exibir classificação por década
 0. Sair
-=============================================
+
 
 Digite o número da opção desejada e pressione Enter. O sistema guiará você com perguntas passo a passo em cada ação.
 
@@ -76,9 +76,9 @@ gerenciador-biblioteca-pessoal/
 
 ## Melhorias Futuras
 O código base já possui funções de busca e filtro construídas, mas pretendo adicionar as seguintes melhorias na interface no futuro:
-* [ ] Adicionar opções no menu para buscar livros específicos por título ou listar obras de um único autor.
-* [ ] Adicionar opção no menu para filtrar apenas livros lidos ou apenas pendentes.
-* [ ] Salvar os dados em um arquivo .json (usando o módulo fs do Node) para persistência entre as sessões.
+*  Adicionar opções no menu para buscar livros específicos por título ou listar obras de um único autor.
+*  Adicionar opção no menu para filtrar apenas livros lidos ou apenas pendentes.
+*  Salvar os dados em um arquivo .json (usando o módulo fs do Node) para persistência entre as sessões.
 
 ## Autor
 Desenvolvido por Lucas Neves. 
