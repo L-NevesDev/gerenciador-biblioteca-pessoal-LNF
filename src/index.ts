@@ -60,10 +60,38 @@ function removerLivro(indice: number): void {
     }
 }
 
+function buscarPorTitulo(termo: string): number[] {
+    const termoMinusc = termo.toLowerCase();
+    const indices: number[] = [];
 
-adicionarLivro("O Silmarillion", "J.R.R. Tolkien", 1977, 428); // Adiciona um válido[cite: 2]
-adicionarLivro("Livro Inválido", "Desconhecido", -5, 0); // Testa a validação do if[cite: 2]
-removerLivro(2); // Remove o livro "1984" que estava no índice 2[cite: 2]
+    titulos.forEach((titulo, index) => {
+        // Verifica se o título contém o que foi digitado
+        if (titulo.toLowerCase().includes(termoMinusc)) {
+            indices.push(index);
+        }
+    });
+
+    return indices;
+}
+
+// Retorna apenas os nomes dos livros de um autor específico
+function listarPorAutor(autorDesejado: string): string[] {
+    // Filtramos os títulos onde o autor na mesma posição bate com a busca
+    return titulos.filter((_, index) => autores[index] === autorDesejado);
+}
+
+
+console.log("\n--- TESTES DE BUSCA ---");
+
+const indicesHobbit = buscarPorTitulo("Hobbit");
+console.log(`Indices encontrados para 'Hobbit': ${indicesHobbit}`);
+
+const livrosTolkien = listarPorAutor("J.R.R. Tolkien");
+console.log(`Livros do Tolkien: ${livrosTolkien.join(", ")}`);
+
+adicionarLivro("O Silmarillion", "J.R.R. Tolkien", 1977, 428); // Adiciona um válido
+adicionarLivro("Livro Inválido", "Desconhecido", -5, 0); // Testa a validação do if
+removerLivro(2); // Remove o livro "1984" que estava no índice 2
 
 // Chamada inicial para testar a exibição
 exibirBiblioteca();
