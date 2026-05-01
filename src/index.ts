@@ -175,6 +175,30 @@ console.log(`Media das avaliacoes: ${mediaAvaliacoes().toFixed(2)}`);
 console.log(`Livro melhor avaliado: ${livroMaiorAvaliacao()}`);
 console.log(`Total de paginas lidas: ${totalPaginasLidas()}`);
 
+// Agrupa e exibe os livros organizados por suas respectivas décadas
+function exibirPorDecada(): void {
+    console.log("\n=== POR DECADA ===");
+
+    // Criamos um array apenas com as décadas únicas presentes na biblioteca
+    // O cálculo Math.floor(ano / 10) * 10 transforma 1937 em 1930
+    const decadasExistentes = anos
+        .map(ano => Math.floor(ano / 10) * 10)
+        .filter((decada, index, self) => self.indexOf(decada) === index) // Remove duplicatas
+        .sort((a, b) => a - b); // Organiza da mais antiga para a mais nova
+
+    // Para cada década encontrada, filtramos e mostramos os livros correspondentes
+    decadasExistentes.forEach(decada => {
+        const livrosDaDecada = titulos.filter((_, index) => {
+            const decadaDoLivro = Math.floor(anos[index] / 10) * 10;
+            return decadaDoLivro === decada;
+        });
+
+        console.log(`${decada}s: ${livrosDaDecada.join(", ")}`);
+    });
+}
+
+exibirPorDecada();
+
 adicionarLivro("O Silmarillion", "J.R.R. Tolkien", 1977, 428); // Adiciona um válido
 adicionarLivro("Livro Inválido", "Desconhecido", -5, 0); // Testa a validação do if
 removerLivro(2); // Remove o livro "1984" que estava no índice 2
