@@ -57,15 +57,6 @@ Ao iniciar, o sistema exibirá o seguinte menu interativo:
 
 Digite o número da opção desejada e pressione Enter. O sistema guiará você com perguntas passo a passo em cada ação.
 
-## Estrutura do Projeto
-
-gerenciador-biblioteca-pessoal/
-├── src/
-│   └── index.ts          # Código-fonte principal com a lógica e menu
-├── package.json          # Gerenciador de dependências e scripts
-├── tsconfig.json         # Configurações rigorosas do compilador TypeScript
-└── README.md             # Documentação do projeto
-
 
 ## O que aprendi com esse projeto
 * Trabalhar com arrays paralelos para simular uma estrutura de dados relacional.
